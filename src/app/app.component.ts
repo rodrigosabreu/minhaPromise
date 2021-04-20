@@ -45,6 +45,19 @@ export class AppComponent implements OnInit {
     })
   }
 
+  minhaPromise2(nome: string) : Promise<string>{
+    return new Promise((resolve, reject) => {
+      if(nome === 'Rodrigo'){
+        setTimeout(() => {
+          resolve('Seja bem vindo ' + nome);
+        }, 3000);
+      }
+      else{
+        reject('Ops! Você não é o Rodrigo');
+      }
+    })
+  }
+
   
 
 
@@ -53,6 +66,10 @@ export class AppComponent implements OnInit {
 
     //chamada da promisse
     this.minhaPromise('Rodrigo')
+    .then(result => console.log(result))
+    .catch(erro => console.log(erro)); 
+
+    this.minhaPromise2('Rodrigo')
     .then(result => console.log(result))
     .catch(erro => console.log(erro)); 
 
